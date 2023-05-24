@@ -1,0 +1,9 @@
+@media (max-width: 1100px) {
+    .navbar-col {
+      display: none;
+    }
+  
+    .content-col {
+      grid-column: 1 / span 12;
+    }
+  }
