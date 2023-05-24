@@ -7,7 +7,7 @@ import {
 import { useState } from 'react';
 import { FiBell } from 'react-icons/fi';
 import NavbarNested from '../bars/Navbar';
-import './Subscribe.css'
+import './subscribe.css'
 import Header from '../bars/header';
 
 
