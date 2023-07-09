@@ -147,7 +147,7 @@ export function UpdateAgents() {
           Submit Configuration
         </Button>
         </div>
-        {isFilled && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Agents Configuration Successful!</p>}
+        {isFilled && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Agents Configuration Successful!</p>}
       </Paper>
     </Container>
     </div>

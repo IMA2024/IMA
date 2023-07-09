@@ -91,7 +91,7 @@ export function BusinessQuestion() {
           Submit Questionnaire
         </Button>
         </div>
-        {isFilled && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Questions Added!</p>}
+        {isFilled && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Questions Added!</p>}
       </Paper>
     </Container>
     </div>

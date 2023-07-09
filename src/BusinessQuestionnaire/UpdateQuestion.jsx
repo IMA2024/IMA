@@ -91,7 +91,7 @@ export function UpdateQuestion() {
           Submit Questionnaire
         </Button>
         </div>
-        {isFilled && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Questions Updated Successfully!</p>}
+        {isFilled && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Questions Updated Successfully!</p>}
       </Paper>
     </Container>
     </div>

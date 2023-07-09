@@ -97,7 +97,7 @@ import {
             </Anchor>
             <Button type='submit' onClick={navigateToResetPass} style={{ backgroundColor: '#4E8480'}}>Reset password</Button>
           </Group>
-          {success && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Code Verified</p>}
+          {success && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Code Verified</p>}
           </form>
         </Paper>
       </Container>

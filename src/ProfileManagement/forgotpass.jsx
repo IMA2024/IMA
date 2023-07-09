@@ -118,7 +118,7 @@ import {
             </Anchor>
             <Button type='submit' onClick={navigateToVerification} style={{ backgroundColor: '#4E8480'}}>Get Verification Code</Button>
           </Group>
-          {success && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Email Verified</p>}
+          {success && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Email Verified</p>}
           </form>
         </Paper>
       </Container>

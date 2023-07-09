@@ -225,7 +225,7 @@ function Signup() {
         <Group position="center" mt="md" >
           <Button type="submit" fullWidth style={{ backgroundColor: '#4E8480'}}>Submit</Button>
         </Group>
-        {isLoggedIn && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Signup Successful!</p>}
+        {isLoggedIn && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Signup Successful!</p>}
       </form>
       </Paper>
       </Center>

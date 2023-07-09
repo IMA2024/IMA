@@ -400,8 +400,8 @@ const handleChange = (event) => {
         <Grid.Col span={12}>
         <Textarea
           withAsterisk
-          label="City"
-          placeholder="City"
+          label="Business Details"
+          placeholder="Business Details"
           required
           value={details} onChange={handleDetails}
           mb={10}
@@ -413,7 +413,7 @@ const handleChange = (event) => {
         <Button fullWidth mt="xl" onClick={handleSubmit} style={{ backgroundColor: '#4E8480'}} >
           Save Details
         </Button>
-        {isLoggedIn && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Profile Completion Successful</p>}
+        {isLoggedIn && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Business Updation Successful</p>}
       </Paper>
     </Container>
    </div>

@@ -12,6 +12,7 @@ const NavbarNested = () => {
     minHeight: '100vh',
     padding: '20px',
     boxSizing: 'border-box',
+    
   };
 
   const navLinkStyles = {
@@ -44,7 +45,7 @@ const NavbarNested = () => {
   };
 
   return (
-    <div style={sidebarStyles}>
+    <div style={sidebarStyles} >
       <nav>
         <ul style={ulStyles}>
         <li>

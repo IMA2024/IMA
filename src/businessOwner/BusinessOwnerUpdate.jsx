@@ -35,6 +35,7 @@ const useStyles = createStyles((theme) => ({
  wrapper: {
    paddingTop: `calc(${theme.spacing.xl} * 2)`,
    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+   
  },
 
  title: {
@@ -411,7 +412,7 @@ const handleChange = (event) => {
         <Button fullWidth mt="xl" onClick={handleSubmit} style={{ backgroundColor: '#4E8480'}} >
           Complete
         </Button>
-        {isLoggedIn && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Profile Completion Successful</p>}
+        {isLoggedIn && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Profile Completion Successful</p>}
       </Paper>
     </Container>
    </div>

@@ -114,7 +114,7 @@ function ForgetPassword() {
         <Group position="center" mt="md" >
           <Button type="submit"  onClick={navigateToSignIn}  fullWidth style={{ backgroundColor: '#4E8480'}}>Submit</Button>
         </Group>
-        {isLoggedIn && <p  style={{ color: 'red', fontSize: '13px', textAlign: 'center' }}>Password Saved!</p>}
+        {isLoggedIn && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Password Saved!</p>}
       </form>
       </Paper>
       </Center>

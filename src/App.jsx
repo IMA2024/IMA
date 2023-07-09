@@ -34,6 +34,13 @@ import PaymentForm from './subscription/payment'
 import FaqWithBg from './Ima/Aboutus'
 import EmailBanner from './Ima/Services'
 import ContactIcons from './Ima/Contactus'
+import Users from './SuperAdmin/User/ViewUser'
+import Demo from './SuperAdmin/User/SpecificUser'
+import AddUser from './SuperAdmin/User/AddUser'
+import EditUser from './SuperAdmin/User/EditUser'
+import RegisterBusiness from './SuperAdmin/Business/RegisterBusiness'
+import EditBusiness from './SuperAdmin/Business/EditBusiness'
+import RegisteredBusinesses from './SuperAdmin/Business/ViewBusiness'
 import {BrowserRouter as Router, Route, Link, Routes} from "react-router-dom"
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core'
 
@@ -78,6 +85,13 @@ function App() {
     <Route exact path='/FaqWithBg' element={<FaqWithBg />}></Route>
     <Route exact path='/EmailBanner' element={<EmailBanner />}></Route>
     <Route exact path='/ContactIcons' element={<ContactIcons />}></Route>
+    <Route exact path='/Users' element={<Users />}></Route>
+    <Route exact path='/Demo' element={<Demo />}></Route>
+    <Route exact path='/AddUser' element={<AddUser />}></Route>
+    <Route exact path='/EditUser' element={<EditUser />}></Route>
+    <Route exact path='/RegisterBusiness' element={<RegisterBusiness />}></Route>
+    <Route exact path='/EditBusiness' element={<EditBusiness />}></Route>
+    <Route exact path='/RegisteredBusinesses' element={<RegisteredBusinesses />}></Route>
     </Routes>
   </Router>
   

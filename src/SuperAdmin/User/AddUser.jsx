@@ -1,5 +1,5 @@
-import { createStyles, Image, Accordion, Grid, Col, Container, Title, Box, Button, SimpleGrid, Input, useMantineTheme, ActionIcon, Group, AspectRatio
-    ,TextInput,
+import { createStyles, Image, Accordion, Grid, Col, Container, Title, Box, Button, SimpleGrid, Input, useMantineTheme, ActionIcon, Group, AspectRatio,
+  TextInput,
     PasswordInput,
     Checkbox,
     Anchor,
@@ -7,9 +7,9 @@ import { createStyles, Image, Accordion, Grid, Col, Container, Title, Box, Butto
     Text,
     Select,
     FileInput,
-     
+    Flex,  
+    MediaQuery
 } from '@mantine/core';
-
 import {
  IconBulb,
  IconUser,
@@ -23,17 +23,17 @@ import {
  IconLocation,
  IconBrandWhatsapp,
  IconPhoneCall,
- IconStar
- 
+ IconStar 
 } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
 import { FiBell } from 'react-icons/fi';
-import Header from '../bars/header';
+import Header from '../../bars/header';
 
 const useStyles = createStyles((theme) => ({
  wrapper: {
    paddingTop: `calc(${theme.spacing.xl} * 2)`,
    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+   
  },
 
  title: {
@@ -52,7 +52,7 @@ const useStyles = createStyles((theme) => ({
 const placeholder =
  'It can’t help but hear a pin drop from over half a mile away, so it lives deep in the mountains where there aren’t many people or Pokémon.';
 
-export default function BusinessOwnerUpdateAgain() { 
+export default function AddUser() { 
 
 
 const [searchValue, setSearchValue] = useState('');
@@ -60,18 +60,19 @@ const [searchValue, setSearchValue] = useState('');
 const theme = useMantineTheme();
 
 const options = [
-  { value: 'super admin', label: 'super admin' },
-  { value: 'marketing agent', label: 'marketing agent' },
-  { value: 'business owner', label: 'business owner' },
+  { value: 'superadmin', label: 'super admin' },
+  { value: 'marketingagent', label: 'marketing agent' },
+  { value: 'businessowner', label: 'business owner' },
   { value: 'customer', label: 'customer' },
 ];
-
 
   const [errorMessage1, setErrorMessage1] = useState('');
   const [errorMessage2, setErrorMessage2] = useState('');
   const [errorMessage4, setErrorMessage4] = useState('');
   const [errorMessage5, setErrorMessage5] = useState('');
   const [errorMessage6, setErrorMessage6] = useState('');
+  const [errorMessage7, setErrorMessage7] = useState('');
+  const [errorMessage8, setErrorMessage8] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [selectedOption, setSelectedOption] = useState('');
@@ -80,11 +81,10 @@ const options = [
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
   const [city, setCity] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
 
-  
-
- 
 
   useEffect(() => {
     if(errorMessage1){
@@ -93,7 +93,7 @@ const options = [
       }
     }
     if(errorMessage2){
-      if(/^[a-zA-Z]{1,20}$/.test(fname)) {
+      if(/^([a-zA-Z]+\s*)*$/.test(fname)) {
         setErrorMessage2('');
       }
     }
@@ -112,8 +112,18 @@ const options = [
         setErrorMessage6('');
       }
     }
+    if(errorMessage7){
+      if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
+        setErrorMessage7('');
+      }
+    }
+    if(errorMessage8){
+      if (password == confirmPassword) {
+        setErrorMessage8('');
+      }
+    }
    
-  }, [selectedOption, fname, phone, city, country]);
+  }, [selectedOption, fname, phone, city, country, password, confirmPassword]);
 
  
 
@@ -137,6 +147,15 @@ const options = [
     setCity(event.target.value);
   }
 
+  function handlePasswordChange(event) {
+    setPassword(event.target.value);
+  }
+
+  function handleConfirmPasswordChange(event) {
+    setConfirmPassword(event.target.value);
+  }
+
+
   function handleSelectedOption(event) {
     setSelectedOption(event.target.value);
   }
@@ -149,7 +168,7 @@ const options = [
   };
 
   const isNameValid = (fname) => {
-    const regex = /^[a-zA-Z]{1,20}$/;
+    const regex = /^([a-zA-Z]+\s*)*$/;
     return regex.test(fname);
   };
 
@@ -167,6 +186,18 @@ const options = [
     const regex = /^[a-zA-Z]{1,20}$/;
     return regex.test(country);
   };
+
+  const isPasswordValid = (password) => {
+    const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+    return regex.test(password);
+  };
+
+  const isConfirmPasswordValid = (confirmPassword) => {
+  if (password == confirmPassword) {
+    return confirmPassword;
+  }
+  };
+
   
 
 
@@ -198,7 +229,18 @@ const options = [
       return;
     }
 
-    if  (isSelectionValid(selectedOption) && isNameValid(fname) && isPhoneValid(phone) && isCountryValid(country) && isCityValid(city)) {
+    if ( !isPasswordValid(password)) {
+      setErrorMessage7('invalid password')
+      return;
+    }
+
+    if ( !isConfirmPasswordValid(confirmPassword)) {
+      setErrorMessage8('invalid confirm password')
+      return;
+    }
+
+
+    if  (isSelectionValid(selectedOption) && isNameValid(fname) && isPhoneValid(phone) && isCountryValid(country) && isCityValid(city) && isPasswordValid(password) && isConfirmPasswordValid(confirmPassword)) {
       setIsLoggedIn(true);
     }
 
@@ -306,18 +348,12 @@ const handleChange = (event) => {
         align="center"
         sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
       >
-     Update Profile
+        Enter User's Details
       </Title>
-      <Title
-        align="center"
-        mt={15}
-        sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 600, fontSize: 18 })}
-      >
-        Business Owner Details
-      </Title>
-
+   
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <Container align="center" mt={15} style={{width:140}}>
+          {/*
         <div>
       <FileInput
         style={{ display: 'flex', alignItems: 'center', height:80, flexDirection:'row' }}
@@ -332,20 +368,23 @@ const handleChange = (event) => {
         Upload
       </Button>
     </div>
+      */}
         </Container>
         <Grid>
         <Grid.Col span={6} >
-     
-    <TextInput
-          withAsterisk
-          label="Enter Business Type"
-          placeholder="Business"
-          required
-          value={selectedOption}
-          onChange={handleSelectedOption}
-          mb={10}
-        />
-  
+         <Select
+         withAsterisk
+        data={options}
+        placeholder="Select an option"
+        label="Select an option"
+        value={selectedOption}
+        onChange={setSelectedOption}
+        clearable
+        searchable
+        required
+        mb={10}
+        size='lg'  
+    />
      {errorMessage1 && <p style={{ color: 'red', fontSize: '13px' }}>{errorMessage1}</p>}
         </Grid.Col>
         <Grid.Col span={6}>
@@ -355,6 +394,7 @@ const handleChange = (event) => {
           placeholder="full name"
           value={fname} onChange={handleFnameChange}
           mb={10}
+          size='lg'
         />
         {errorMessage2 && <p style={{ color: 'red', fontSize: '13px' }}>{errorMessage2}</p>}
         </Grid.Col>
@@ -368,8 +408,9 @@ const handleChange = (event) => {
           required
           value={address} onChange={handleAddress}
           mb={10}
+          size='lg'
         />
-        
+       
         </Grid.Col>
         <Grid.Col span={6}>
         <TextInput
@@ -378,6 +419,7 @@ const handleChange = (event) => {
           placeholder="phone number"
           value={phone} onChange={handleConfirmPhoneChange}
           mb={10}
+          size='lg'
         />
         {errorMessage4 && <p style={{ color: 'red', fontSize: '13px' }}>{errorMessage4}</p>}
         </Grid.Col>
@@ -391,6 +433,7 @@ const handleChange = (event) => {
           required
           value={country} onChange={handleCountry}
           mb={10}
+          size='lg'
         />
         {errorMessage5 && <p style={{ color: 'red', fontSize: '13px' }}>{errorMessage5}</p>}
         </Grid.Col>
@@ -402,13 +445,51 @@ const handleChange = (event) => {
           required
           value={city} onChange={handleCity}
           mb={10}
+          size='lg'
         />
         {errorMessage6 && <p style={{ color: 'red', fontSize: '13px' }}>{errorMessage6}</p>}
         </Grid.Col>
+        <Grid.Col span={6}>
+        <TextInput
+          withAsterisk
+          label="Password"
+          placeholder="Password"
+          required
+          value={password} onChange={handlePasswordChange}
+          mb={10}
+          size='lg'
+        />
+        {errorMessage7 && <p style={{ color: 'red', fontSize: '13px' }}>{errorMessage7}</p>}
+        </Grid.Col>
+        <Grid.Col span={6}>
+        <TextInput
+          withAsterisk
+          label="Confirm Password"
+          placeholder="Confirm Password"
+          required
+          value={confirmPassword} onChange={handleConfirmPasswordChange}
+          mb={10}
+          size='lg'
+        />
+        {errorMessage8 && <p style={{ color: 'red', fontSize: '13px' }}>{errorMessage8}</p>}
+        </Grid.Col>
         </Grid>
-        
+        <div>
+      <FileInput
+        style={{ display: 'flex', alignItems: 'center', height:80,  }}
+        accept="image/*"
+        onChange={handleFileChange}
+        size='lg'
+        value={selectedFile ? selectedFile.name : ''}
+        icon={<IconUser size="lg" style={{ display: 'flex', justifyContent: 'center', marginLeft: '10' }} />}
+      />
+
+      <Button disabled={!selectedFile} onClick={handleUpload}>
+        Upload
+      </Button>
+    </div>
         <Button fullWidth mt="xl" onClick={handleSubmit} style={{ backgroundColor: '#4E8480'}} >
-          Update
+          Complete
         </Button>
         {isLoggedIn && <p  style={{ color: 'blue', fontSize: '13px', textAlign: 'center' }}>Profile Completion Successful</p>}
       </Paper>
