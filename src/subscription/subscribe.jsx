@@ -1,4 +1,4 @@
-import { createStyles, Image, Accordion, Grid, Col, Container, Title,  Input, useMantineTheme, ActionIcon, Group, Paper, Center, Box, Button, 
+import { createStyles, Image, Accordion, Grid, Col, Container, Title,  Input, useMantineTheme, ActionIcon, Group, Paper, Center, Box, Button, Card, CardSection
 } from '@mantine/core';
 
 import {
@@ -124,7 +124,8 @@ const handleChange = (event) => {
       </Title>
       <Grid gutter={30}>
         <Grid.Col span={4}>
-        <Paper withBorder shadow="md" p={30} mt={30} radius="md">          
+          <Card>
+        <Paper withBorder shadow="md" p={30} mt={30} radius="md" >
           <Center>
       <b>Silver Plan</b>
        </Center>
@@ -153,8 +154,10 @@ const handleChange = (event) => {
           </Button>
         </Center>
       </Paper>
+      </Card>
         </Grid.Col>
         <Grid.Col span={4}>
+          <Card>
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <Center>
       <b>Gold Plan</b>
@@ -163,7 +166,7 @@ const handleChange = (event) => {
        <p>5000 Calls</p>
        </Center>
        <Center>
-       <Box maw={90} mx="auto">
+       <Box maw={100} mx="auto">
       <Image
         radius="md"
         src="https://mrhomegenius.com/wp-content/uploads/2020/08/images.png"
@@ -184,8 +187,10 @@ const handleChange = (event) => {
           </Button>
         </Center>
       </Paper>
+      </Card>
         </Grid.Col>
         <Grid.Col span={4}>
+          <Card>
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <Center>
       <b>Platinum Plan</b>
@@ -215,6 +220,7 @@ const handleChange = (event) => {
           </Button>
         </Center>
       </Paper>
+      </Card>
         </Grid.Col>
       </Grid>
       </Grid.Col>
